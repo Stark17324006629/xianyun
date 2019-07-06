@@ -97,10 +97,10 @@ export default {
                 city:"北京"
             },
             {
-                city:"上海"
+                city:"广州"
             },
             {
-                city:"湖南"
+                city:"成都"
             },
             {
                 city:"华盛顿"
@@ -112,6 +112,10 @@ export default {
 
 
         ],
+        // 垃圾数据存放
+        // para:{
+        //   city:""
+        // },
         // 分页数据存放
         start: 0,
         limit: 3,
@@ -137,11 +141,31 @@ export default {
   //  跳一哈子
   methods: {
     jump: function(b) {
+      // console.log(this.currentCities[b].city);
+      
       this.jumpData = this.currentCities[b].city;
       this.$router.push({
         //   path:"/post",
-        query: this.jumpData
+        query: {
+          city:this.jumpData
+        },
+
       });
+      this.$axios({
+            url:"/posts",
+            method:"GET",
+            params:{
+              city:this.jumpData
+            }
+        }).then((result)=>{
+            // console.log(result);
+            
+            
+            this.postlist=result.data.data
+            this.total=result.data.total
+            
+        })
+      
     },
     // 获取导航栏城市列表
     //   后台请求数据
@@ -151,6 +175,8 @@ export default {
         method: "GET"
       }).then(result => {
         this.citys = result.data.data;
+        console.log(11)
+        console.log(this.citys)
         // console.log(this.citys);
       });
     },
@@ -166,16 +192,18 @@ export default {
       this.currentMenu = 99999;
       this.showSubMenu = false;
     },
+    // 标题搜索
+    
+
     // 获取文章列表
-    getPostList:function(){
+    getPostList(){
+     
         this.$axios({
             url:"/posts",
             method:"GET",
-            params:{
-                // city:""
-            }
+            params:""
         }).then((result)=>{
-            console.log(result);
+            // console.log(result);
             
             
             this.postlist=result.data.data
@@ -189,11 +217,64 @@ export default {
     },
     // 搜索事件
     handleSearch:function(){
+      if(this.city){
+        this.$axios({
+            url:"/posts",
+            method:"GET",
+            params:{
+              city:this.city
+            }
+        }).then((result)=>{
+            // console.log(result);
+            
+            
+            this.postlist=result.data.data
+            this.total=result.data.total
+            
+        })
+      }else{
+        this.$axios({
+            url:"/posts",
+            method:"GET",
+            params:""
+        }).then((result)=>{
+            // console.log(result);
+            
+            
+            this.postlist=result.data.data
+            this.total=result.data.total
+            
+        })
+      }
+
+
+
 
     },
     // 标题搜索
     titleSearch:function(ct){
         this.city=ct
+        this.$router.push({
+          path:"",
+          query:{
+            city:ct
+          }
+        })
+        this.$axios({
+            url:"/posts",
+            method:"GET",
+            params:{
+              city:ct
+            }
+        }).then((result)=>{
+            // console.log(result);
+            
+            
+            this.postlist=result.data.data
+            this.total=result.data.total
+            
+        })
+
     },
     // 分页
     handleSizeChange(value){

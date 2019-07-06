@@ -29,7 +29,8 @@ export default {
   */
   css: [
     'element-ui/lib/theme-chalk/index.css',
-    'assets/main.css'
+    'assets/main.css',
+    
   ],
 
   /*
@@ -38,7 +39,8 @@ export default {
   plugins: [
     '@/plugins/element-ui',
     '@/plugins/axios',
-    { src: '@/plugins/localStorage', ssr: false }
+    { src: '@/plugins/localStorage', ssr: false },
+    
   ],
 
   /*

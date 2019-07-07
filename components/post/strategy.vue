@@ -101,9 +101,7 @@ export default {
     props: {
         data: {
             type: Object,
-            default: {
-                images: []
-            }
+            default: {}
         }
     },
 
@@ -142,8 +140,9 @@ export default {
     .post-content{
         width:470px;
     }
-    .post-desc{
-    }
+    // .post-desc{
+        
+    // }
 }
 
 

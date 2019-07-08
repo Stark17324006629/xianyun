@@ -4,204 +4,285 @@
       <el-breadcrumb-item>酒店</el-breadcrumb-item>
       <el-breadcrumb-item>南京市酒店预订</el-breadcrumb-item>
     </el-breadcrumb>
-    <el-form style="margin-bottom:20px">
-      <el-row type="flex" class="filters-top" justify="space-between" align="middle">
-        <el-col :span="4">
-          <el-autocomplete
-            :fetch-suggestions="queryDepartSearch"
-            placeholder="南京市"
-            @select="handleDepartSelect"
-            class="el-autocomplete"
-          ></el-autocomplete>
-        </el-col>
-        <el-col :span="8">
-          <el-date-picker
-            v-model="value1"
-            type="daterange"
-            range-separator="-"
-            start-placeholder="入住日期"
-            end-placeholder="离店日期"
-          ></el-date-picker>
-        </el-col>
-        <el-col :span="4">
-          <el-select placeholder="活动区域">
-            <el-option label="区域一" value="shanghai"></el-option>
-            <el-option label="区域二" value="beijing"></el-option>
-          </el-select>
-        </el-col>
-        <el-col :span="4">
-          <el-button type="primary">查询</el-button>
-        </el-col>
-      </el-row>
+     <el-form :inline="true" class="demo-form-inline">
+      <el-form-item>
+        <el-input v-model="cityName" :placeholder="cityName"></el-input>
+      </el-form-item>
+      <el-form-item>
+        <el-date-picker
+          type="daterange"
+          range-separator="-"
+          start-placeholder="入住日期"
+          end-placeholder="结束日期"
+        >
+        </el-date-picker>
+      </el-form-item>
+      <el-form-item>
+        <el-input placeholder="人数未定" suffix-icon="el-icon-user" />
+      </el-form-item>
+      <el-form-item>
+        <el-button type="primary">
+          查看价格
+        </el-button>
+      </el-form-item>
     </el-form>
-    <el-row
-      type="flex"
-      class="filters-top"
-      justify="space-between"
-      style="margin-left:-5px;margin-right:-5px;height:260px ;margin-bottom:20px"
-    >
-      <el-col :span="14">
-        <el-row>
-          <el-row type="flex" justify="space-between" class="el">
-            <el-col :span="3">
-              <div>区域:</div>
-            </el-col>
-            <el-col :span="24" class="bud">
-              <div data-v-d0475a26 class="scenics-box">
-                <!-- <a data-v-d0475a26 href="#" class="location-budget active">全部</a> -->
-                <a data-v-d0475a26 href="#" class="location-budget active">全部</a>
-                <a data-v-d0475a26 class="location-budget">镇兴路沿线</a>
-                <a data-v-d0475a26 class="location-budget">视觉艺术学院</a>
-                <a data-v-d0475a26 class="location-budget">大成名店</a>
-                <a data-v-d0475a26 class="location-budget">南京西站</a>
-              </div>
-              <i data-v-d0475a26 class="el-icon-d-arrow-right" style="color:#f90">43</i>
-            </el-col>
-          </el-row>
-          <el-row type="flex" justify="space-between" class="el">
-            <el-col :span="3">
-              <div>攻略：</div>
-            </el-col>
-            <el-col :span="24" class="bud">
-              <!-- <div>12</div> -->
-              <div data-v-d0475a26 class="scenics-box">
-                <a data-v-d0475a26 href="#" class="location-budget active">全部</a>
-                <a data-v-d0475a26 class="location-budget">镇兴路沿线</a>
-                <a data-v-d0475a26 class="location-budget">视觉艺术学院</a>
-                <a data-v-d0475a26 class="location-budget">大成名店</a>
-                <a data-v-d0475a26 class="location-budget">南京西站</a>
-              </div>
-            </el-col>
-          </el-row>
-          <el-row type="flex" justify="space-between" class="el">
-            <el-col :span="3">
-              <div>
-                均价
-                <sup
-                  data-v-d0475a26
-                  class="question-mark el-tooltip"
-                  aria-describedby="el-tooltip-4657"
-                  tabindex="0"
-                  style="    background-color: #ccc;
-                              color: #fff;
-                            display: inline-block;
-                            width: 1.2em;
-                            height: 1.2em;
-                            text-align: center;
-                            border-radius: 100%;"
-                >?</sup>:
-              </div>
-            </el-col>
-            <el-col :span="24" class="icolor">
-              <el-row type="flex">
-                <el-col :span="6">
-                  <span
-                    data-v-d0475a26
-                    class="el-tooltip"
-                    aria-describedby="el-tooltip-3948"
-                    tabindex="0"
-                  >
-                    <i class="iconfont iconhuangguan"></i>
-                    <i class="iconfont iconhuangguan"></i>
-                    <i class="iconfont iconhuangguan"></i>
-                    <span class="price-budget">¥332</span>
-                  </span>
-                </el-col>
-                <el-col :span="6">
-                  <span
-                    data-v-d0475a26
-                    class="el-tooltip"
-                    aria-describedby="el-tooltip-4954"
-                    tabindex="0"
-                  >
-                    <i class="iconfont iconhuangguan"></i>
-                    <i class="iconfont iconhuangguan"></i>
-                    <i class="iconfont iconhuangguan"></i>
-                    <i class="iconfont iconhuangguan"></i>
-                    <span class="price-budget">¥521</span>
-                  </span>
-                </el-col>
-                <el-col :span="8">
-                  <span
-                    data-v-d0475a26
-                    class="el-tooltip"
-                    aria-describedby="el-tooltip-4954"
-                    tabindex="0"
-                  >
-                    <i class="iconfont iconhuangguan"></i>
-                    <i class="iconfont iconhuangguan"></i>
-                    <i class="iconfont iconhuangguan"></i>
-                    <i class="iconfont iconhuangguan"></i>
-                    <i class="iconfont iconhuangguan"></i>
-                    <span class="price-budget">¥768</span>
-                  </span>
-                </el-col>
-              </el-row>
-            </el-col>
-          </el-row>
+    
+   <MapInfo :cityinfo='cityinfo' :hotellistt='hotelList'/>
+
+   <el-row type="flex" class="election">
+      <el-col :span="4" class="election-block election-block-fist">
+        <el-row type="flex" justify="space-between" class="election-title">
+          <div>价格</div>
+          <div>0-{{ price }}</div>
         </el-row>
+        <div>
+          <div class="block">
+            <el-slider
+              v-model="price"
+              :max="4000"
+              @change="handleChange"
+            ></el-slider>
+          </div>
+        </div>
       </el-col>
-      <el-col :span="10">
-        <Map />
+      <el-col :span="5" class="election-block">
+        <div class="election-title">
+          住宿等级
+        </div>
+        <div class="election-option">
+          <el-select
+            v-model="levels"
+            multiple  
+            collapse-tags
+            :placeholder="levels.length === 0 ? '不限' : ''"
+            size="mini"
+            @change="handleChange"
+          >
+            <el-option
+              v-for="item in data.levels"
+              :key="item.id"
+              :label="item.name"
+              :value="item.id"
+            >
+            </el-option>
+          </el-select>
+        </div>
+      </el-col>
+      <el-col :span="5" class="election-block">
+        <div class="election-title">
+          住宿类型
+        </div>
+        <div class="election-option">
+          <el-select
+            v-model="types"
+            multiple
+            collapse-tags
+            :placeholder="types.length === 0 ? '不限' : ''"
+            size="mini"
+            @change="handleChange"
+          >
+            <el-option
+              v-for="item in data.types"
+              :key="item.id"
+              :label="item.name"
+              :value="item.id"
+            >
+            </el-option>
+          </el-select>
+        </div>
+      </el-col>
+      <el-col :span="5" class="election-block">
+        <div class="election-title">
+          酒店设施
+        </div>
+        <div class="election-option">
+          <el-select
+            v-model="assets"
+            multiple
+            collapse-tags
+            :placeholder="assets.length === 0 ? '不限' : ''"
+            size="mini"
+            @change="handleChange"
+          >
+            <el-option
+              v-for="item in data.assets"
+              :key="item.id"
+              :label="item.name"
+              :value="item.id"
+            >
+            </el-option>
+          </el-select>
+        </div>
+      </el-col>
+      <el-col :span="5" class="election-block">
+        <div class="election-title">
+          酒店品牌
+        </div>
+        <div class="election-option">
+          <el-select
+            v-model="brands"
+            multiple
+            collapse-tags
+            :placeholder="brands.length === 0 ? '不限' : ''"
+            size="mini"
+            @change="handleChange"
+          >
+            <el-option
+              v-for="item in data.brands"
+              :key="item.id"
+              :label="item.name"
+              :value="item.id"
+            >
+            </el-option>
+          </el-select>
+        </div>
       </el-col>
     </el-row>
-    <el-row type="flex" class="jiagexiala">
-      <el-col :span="8" class="sslider">
-        <el-row justify="space-between">
-          <el-col :span="18">价格</el-col>
-          <el-col :span="6">0-4000</el-col>
-        </el-row>
-        <el-slider v-model="value2" max="4000" style="205px"></el-slider>
-      </el-col>
-      <el-col :span="6">
-        <el-dropdown class='buxian'>
-          <span class="el-dropdown-link">
-            下拉菜单
-            <i class="el-icon-arrow-down el-icon--right"></i>
-          </span>
-          <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item>黄金糕</el-dropdown-item>
-            <el-dropdown-item>狮子头</el-dropdown-item>
-            <el-dropdown-item>螺蛳粉</el-dropdown-item>
-            <span>aaa</span>
-            <el-radio :label="3">备选项</el-radio>
-            <el-radio :label="6">备选项</el-radio>
-            <el-radio :label="9">备选项</el-radio>
-            
-          </el-dropdown-menu>
-        </el-dropdown>
-      </el-col>
-      <el-col :span="6">1</el-col>
-      <el-col :span="6">1</el-col>
-      <el-col :span="6">1</el-col>
-    </el-row>
+    
+
+    <div v-if='total!==0'>
+      <div>
+        <ul>
+          <li v-for='(item,index) in hotelList' :key='index' class="hotel-list">
+            <HotelList :item='item'/>
+          </li>
+        </ul>
+      </div>
+
+      <div class="pageblock">
+        <el-pagination
+          :current-page="currentPage"
+          :page-sizes="[5, 10, 15, 20]"
+          :page-size="pageSize"
+          layout="total, sizes, prev, pager, next, jumper"
+          :total="total"
+          @size-change="handleSizeChange"
+          @current-change="handleCurrentChange"
+        >
+        </el-pagination>
+      </div>
+    </div>
+    <div v-if="total === 0" class="no">
+      暂无符合条件的酒店
+    </div>
+   
+    
   </section>
 </template>
 <script>
-import Map from "./map";
+import MapInfo from "@/components/hotel/mapInfo";
+import HotelList from '@/components/hotel/hotelList'
 export default {
   components: {
-    Map
+    MapInfo,
+    HotelList
   },
   data() {
     return {
-      value1: "", //时间选择器
+      city: 74,
+      cityName:'南京',
+      cityinfo:{},  //查找的城市数据，比如远程搜索下的南京
+      data:'',   //酒店选项数据，例如酒店等级下拉表中那些
+      levels:[], //酒店星级等级，一星二星那些
+      price:4000, //滑块的价格
+      assets:[],  //酒店设施数据
+      brands:[],  //酒店品牌数据
+      types:[],  //酒店住宿类型
+      total:0,
+      scenis:null,  
+      hotelList:[],  //酒店详情数据
+      pageSize:10,     //条数
+      currentPage:1,    //当前页数
 
-
-      // cxvcxvcxvcxv
-      value2: 0
     };
   },
   methods: {
-    queryDepartSearch(value, cb) {
-      cb([{ value: 1 }, { value: 2 }, { value: 3 }]);
-    },
+    // queryDepartSearch(value, cb) {
+    //   cb([{ value: 1 }, { value: 2 }, { value: 3 }]);
+    // },
     // 出发城市下拉选择时触发
-    handleDepartSelect(item) {}
-  }
+    // handleDepartSelect(item) {},
+    // 获取查找的城市数据
+    getCity(){
+      this.$axios.get(`/cities?name=${this.cityName}`).then(res=>{
+        // console.log(res)
+        this.cityinfo=res.data.data[0]
+      })
+    },
+    // handleChange(){
+    //   console.log(1)
+    // },
+    // 获取酒店详情数据
+  init(){
+    const obj={
+      params:{
+        city:this.city,  //城市id
+        _start: (this.currentPage - 1) * this.pageSize,    //分页（开始数据）
+        _limit: this.pageSize,  //条数
+          price_lt: this.price
+        // price_in: this.price   //酒店价格
+
+      }
+    }
+    let str = ''
+      this.levels.forEach((v) => {
+        str += `hotellevel_in=${v}&`
+      })
+      this.types.forEach((v) => {
+        str += `hoteltype_in=${v}&`
+      })
+      this.assets.forEach((v) => {
+        str += `hotelasset_in=${v}&`
+      })
+      this.brands.forEach((v) => {
+        str += `hotelbrand_in=${v}&`
+      })
+      if (this.scenic) {
+        obj.params.scenic = this.scenic
+      } else {
+        delete obj.params.scenic
+      }
+      this.$axios.get(`/hotels?${str}`, obj).then((res) => {
+        console.log(res)
+        console.log(1)
+        this.hotelList = res.data.data
+        this.total = res.data.total
+      })
+  },
+    handleSizeChange(val) {
+      this.pageSize = val
+      this.init()
+    },
+    handleCurrentChange(val) {
+      this.currentPage = val
+      this.init()
+    },
+    handleChange() {
+      this.currentPage = 1
+      this.init()
+    }
+
+    
+  },
+  mounted(){
+    this.getCity()
+    this.init()
+    // 获取城市选项数据
+    this.$axios.get('/hotels/options').then(res=>{
+      // console.log(res)
+      this.data=res.data.data
+    })
+  },
+  create(){
+    this.$bus.$on('scenics',(e)=>{
+      this.scenis=e
+      this.init()
+    })
+  },
+  
 };
 </script>
-<style >
+<style lang="less">
 .container {
   width: 1000px;
   margin: 0 auto;
@@ -210,51 +291,128 @@ export default {
   height: 62px;
   line-height: 62px;
 }
-.container .filters-top .el {
-  margin-bottom: 20px;
-  color: #666;
-  font-size: 14px;
-}
-.container .filters-top .el .icolor .el-tooltip .iconfont {
-  color: #f90;
-}
-.container .filters-top .el .bud .location-budget {
-  margin-right: 1em;
-  padding: 0 2px;
-  border-radius: 4px;
-  display: inline-block;
-  color: inherit;
-}
-.container .filters-top .el .bud .active {
-  background: #eee;
-  cursor: auto;
-  text-decoration: none;
-  color: #999;
-}
-.jiagexiala {
-  border-top: 1px solid #666;
-  border-bottom: 1px solid #666;
-  padding: 5px 20px;
-  height: 80px;
-  color: #666;
-}
-.sslider {
-  /* line-height: 80px; */
-  /* padding:10px; */
-  padding-left: 20px;
-  padding-right: 20px;
-  border-right: 2px solid #999;
-}
-.el-dropdown-link {
-    cursor: pointer;
-    color: #409EFF;
+.hotel-main {
+  width: 1000px;
+  min-height: 550px;
+  margin: auto;
+
+  > h4 {
+    margin: 20px 0;
   }
-  .el-icon-arrow-down {
+}
+.election {
+  padding: 5px;
+  border: 1px solid #ddd;
+
+  &:first-child .election-block {
+    border-color: #fff;
+  }
+
+  .election-title {
     font-size: 12px;
+    padding-left: 15px;
   }
-  .buxian{
-    width:100%;
+
+  .el-input__inner {
+    border: 1px solid #fff !important;
   }
+
+  .election-block {
+    border-left: 1px solid #ddd;
+    padding: 5px 5px 0;
+
+    &:first-child .election-title {
+      padding-left: 0;
+    }
+  }
+  .election-block-fist {
+    padding-right: 15px;
+    border-color: #fff;
+  }
+  .election-option {
+    margin-top: 5px;
+  }
+}
+
+.hotel-list {
+  padding: 20px 0;
+  border-bottom: 1px solid #eee;
+  img {
+    width: 100%;
+    height: 222px;
+  }
+
+  .list-item {
+    padding-left: 20px;
+
+    h3 {
+      font-size: 24px;
+      cursor: pointer;
+
+      &:hover {
+        color: orange;
+      }
+    }
+
+    p {
+      color: #999;
+      font-size: 14px;
+      line-height: 1.5;
+      i {
+        color: orange;
+      }
+    }
+
+    .item-evaluate {
+      padding: 10px 0;
+      font-size: 14px;
+
+      .evaluate-content {
+        padding: 0 20px;
+
+        em {
+          color: orange;
+        }
+      }
+    }
+
+    .position {
+      color: #333;
+      font-size: 14px;
+    }
+  }
+
+  .price-item {
+    padding: 15px 25px 15px 10px;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+    color: #666;
+
+    &:hover {
+      background-color: #eee;
+      cursor: pointer;
+    }
+
+    em {
+      color: orange;
+    }
+  }
+}
+.pageblock {
+  margin: 15px 0 50px;
+
+  .el-pagination {
+    text-align: right;
+  }
+}
+
+.no {
+  margin-top: 20px;
+  text-align: center;
+}
 </style>
+
+
+
 
 

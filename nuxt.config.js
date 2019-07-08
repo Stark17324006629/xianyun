@@ -40,12 +40,20 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '@/plugins/element-ui',
+    {src:'@/plugins/element-ui', ssr:true },
+    // '@/plugins/element-ui',
     '@/plugins/axios',
     { src: '@/plugins/localStorage', ssr: false },
+<<<<<<< HEAD
+    '@/plugins/bus',
+=======
     
+<<<<<<< HEAD
     { src: "~plugins/vue-quill-editor.js", ssr: false },
     
+=======
+>>>>>>> 85373162a2087e73e71e490efeeef4a5c1cb2aaa
+>>>>>>> d4792316da3fc9b6d81a9b1d42997625beeae5eb
   ],
 
   /*

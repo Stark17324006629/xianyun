@@ -30,6 +30,9 @@ export default {
   css: [
     'element-ui/lib/theme-chalk/index.css',
     'assets/main.css',
+    'quill/dist/quill.snow.css',
+    'quill/dist/quill.bubble.css',
+    'quill/dist/quill.core.css'
     
   ],
 
@@ -40,6 +43,8 @@ export default {
     '@/plugins/element-ui',
     '@/plugins/axios',
     { src: '@/plugins/localStorage', ssr: false },
+    
+    { src: "~plugins/vue-quill-editor.js", ssr: false },
     
   ],
 

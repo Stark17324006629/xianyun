@@ -175,8 +175,8 @@ export default {
         method: "GET"
       }).then(result => {
         this.citys = result.data.data;
-        console.log(11)
-        console.log(this.citys)
+        // console.log(11)
+        // console.log(this.citys)
         // console.log(this.citys);
       });
     },
@@ -201,9 +201,11 @@ export default {
         this.$axios({
             url:"/posts",
             method:"GET",
-            params:""
+            params:{
+              city:"北京"
+            }
         }).then((result)=>{
-            // console.log(result);
+            console.log(result);
             
             
             this.postlist=result.data.data
